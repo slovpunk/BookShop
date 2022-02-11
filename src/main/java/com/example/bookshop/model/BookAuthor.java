@@ -1,11 +1,10 @@
 package com.example.bookshop.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "books_author")
 public class BookAuthor {
 
     @Id
@@ -13,5 +12,7 @@ public class BookAuthor {
     private Long id;
 
     private String name;
-//    private Book book;
+
+    @OneToMany(mappedBy = "bookAuthor")
+    private List<Book> books;
 }

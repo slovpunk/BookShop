@@ -5,12 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-//@Table(name = "book")
+@Table(name = "books")
 public class Book {
 
     @Id
@@ -20,5 +21,11 @@ public class Book {
     @Column
     private String title;
 
-//    private BookAuthor bookAuthor;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private BookAuthor bookAuthor;
+
+    @ManyToMany(mappedBy = "bookList")
+    private List<User> user;
+
 }
