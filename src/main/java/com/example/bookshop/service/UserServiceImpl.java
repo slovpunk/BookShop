@@ -4,9 +4,11 @@ import com.example.bookshop.model.User;
 import com.example.bookshop.repositories.UserRepository;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
-@Builder
+
+@Component
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
