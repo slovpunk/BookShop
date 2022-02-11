@@ -10,7 +10,9 @@
 <body>
 <h1>All books</h1>
 <table>
-
+<tr>
+    <td>${book}</td>
+</tr>
 </table>
 
 </body>
