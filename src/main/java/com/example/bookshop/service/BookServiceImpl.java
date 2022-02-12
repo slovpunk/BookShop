@@ -2,6 +2,7 @@ package com.example.bookshop.service;
 
 import com.example.bookshop.forms.BookForm;
 import com.example.bookshop.model.Book;
+import com.example.bookshop.model.BookAuthor;
 import com.example.bookshop.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,12 +33,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBook(Book book) {
-        bookRepository.delete(book);
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
     }
 
     @Override
     public List<Book> showAllBooks() {
         return bookRepository.findAll();
     }
+
 }

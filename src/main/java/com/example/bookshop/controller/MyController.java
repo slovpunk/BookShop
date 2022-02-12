@@ -1,10 +1,13 @@
 package com.example.bookshop.controller;
 
 
+import com.example.bookshop.forms.AuthorForm;
 import com.example.bookshop.forms.BookForm;
 import com.example.bookshop.forms.UserForm;
 import com.example.bookshop.model.Book;
+import com.example.bookshop.model.BookAuthor;
 import com.example.bookshop.model.User;
+import com.example.bookshop.service.BookAuthorService;
 import com.example.bookshop.service.BookService;
 import com.example.bookshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +23,16 @@ public class MyController {
 
     private UserService userService;
     private BookService bookService;
+    private BookAuthorService bookAuthorService;
 
-    @Autowired
-    public MyController(UserService userService, BookService bookService) {
+    public MyController(UserService userService, BookService bookService, BookAuthorService bookAuthorService) {
         this.userService = userService;
         this.bookService = bookService;
+        this.bookAuthorService = bookAuthorService;
     }
+
+    ////////////////////////////////////////////////////// books
+
 
     @GetMapping("/books")
     public String getAllBooks(Model model) {
@@ -40,6 +47,15 @@ public class MyController {
         return "redirect:/bookins/books";
     }
 
+    @PostMapping("/books/{id}")
+    public String deleteBook(@PathVariable(value = "id") Long id) {
+        bookService.deleteBook(id);
+        return "redirect:/bookins/books";
+    }
+
+
+    ////////////////////////////////////////////////////// users
+
     @GetMapping("/users")
     public String getAllUsers(Model model) {
         List<User> users = userService.showAllUsers();
@@ -51,6 +67,22 @@ public class MyController {
     public String saveUser(UserForm userForm) {
         userService.saveUser(userForm);
         return "redirect:/bookins/users";
+    }
+
+
+    ////////////////////////////////////////////////////// authors
+
+    @GetMapping("/authors")
+    public String getAllAuthors(Model model) {
+        List<BookAuthor> authors = bookAuthorService.showAllAuthors();
+        model.addAttribute("authors", authors);
+        return "view-all-authors";
+    }
+
+    @PostMapping("/authors")
+    public String saveUser(AuthorForm authorForm) {
+        bookAuthorService.saveAuthor(authorForm);
+        return "redirect:/bookins/authors";
     }
 
 }
