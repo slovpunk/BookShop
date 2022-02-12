@@ -2,6 +2,7 @@ package com.example.bookshop.controller;
 
 
 import com.example.bookshop.forms.BookForm;
+import com.example.bookshop.forms.UserForm;
 import com.example.bookshop.model.Book;
 import com.example.bookshop.model.User;
 import com.example.bookshop.service.BookService;
@@ -37,6 +38,19 @@ public class MyController {
     public String saveBook(BookForm bookForm) {
         bookService.saveBook(bookForm);
         return "redirect:/bookins/books";
+    }
+
+    @GetMapping("/users")
+    public String getAllUsers(Model model) {
+        List<User> users = userService.showAllUsers();
+        model.addAttribute("users", users);
+        return "view-all-users";
+    }
+
+    @PostMapping("/users")
+    public String saveUser(UserForm userForm) {
+        userService.saveUser(userForm);
+        return "redirect:/bookins/users";
     }
 
 }

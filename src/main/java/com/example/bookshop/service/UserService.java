@@ -1,8 +1,12 @@
 package com.example.bookshop.service;
 
 
+import com.example.bookshop.forms.UserForm;
 import com.example.bookshop.model.User;
 
+import java.util.List;
+
 public interface UserService {
-    void addUser(User user);
+    void saveUser(UserForm userForm);
+    List<User> showAllUsers();
 }

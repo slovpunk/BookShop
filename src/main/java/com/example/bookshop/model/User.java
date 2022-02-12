@@ -2,6 +2,7 @@ package com.example.bookshop.model;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "users")
 public class User {
 
@@ -20,6 +22,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String surname;
+    private int age;
+    @Column(name = "favorite_genre")
+    private String favoriteGenre;
 
     @ManyToMany
     @JoinTable(
