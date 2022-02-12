@@ -18,6 +18,13 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
 
+    public enum Role {
+        ADMIN, USER
+    }
+
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

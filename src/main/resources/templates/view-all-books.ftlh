@@ -38,7 +38,7 @@
         <tr>
             <td>${book.id}</td>
             <td>${book.title}</td>
-            <td>${book.price}</td>
+            <td>${book.price?c}</td>
             <td>${book.genre}</td>
             <td>${book.description}</td>
         </tr>
