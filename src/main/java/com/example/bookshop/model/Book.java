@@ -1,6 +1,7 @@
 package com.example.bookshop.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 @Entity
 @Table(name = "books")
 public class Book {
@@ -18,8 +20,17 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+
     @Column
     private String title;
+    @Column
+    private String genre;
+    @Column
+    private Double price;
+    @Column
+    private String description;
+
 
     @ManyToOne
     @JoinColumn(name = "author_id")

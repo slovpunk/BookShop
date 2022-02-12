@@ -8,12 +8,40 @@
     <title>Document</title>
 </head>
 <body>
-<h1>All books</h1>
+<h3>Add new book:</h3>
+<form method="post" action="/bookins/books">
+    <label>Title:
+        <input name="title" value="asd">
+    </label>
+    <label>Genre:
+        <input name="genre" value="Genre">
+    </label>
+    <label>Price:
+        <input name="price" value=99>
+    </label>
+    <label>Description:
+        <input name="description" value="Description">
+    </label>
+    <input type="submit" name="Add">
+    <br>
+    <h3>Products in catalog right now:</h3>
+</form>
 <table>
-<tr>
-    <td>${book}</td>
-</tr>
-</table>
-
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>price</th>
+        <th>genre</th>
+        <th>description</th>
+    </tr>
+    <#list book as book>
+        <tr>
+            <td>${book.id}</td>
+            <td>${book.title}</td>
+            <td>${book.price}</td>
+            <td>${book.genre}</td>
+            <td>${book.description}</td>
+        </tr>
+    </#list>
 </body>
 </html>

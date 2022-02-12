@@ -1,5 +1,6 @@
 package com.example.bookshop.service;
 
+import com.example.bookshop.forms.BookForm;
 import com.example.bookshop.model.Book;
 import com.example.bookshop.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,15 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void saveBook(Book book) {
+    public void saveBook(BookForm bookForm) {
+        Book book = Book.builder()
+                .id(bookForm.getId())
+                .title(bookForm.getTitle())
+                .price(bookForm.getPrice())
+                .genre(bookForm.getGenre())
+                .description(bookForm.getDescription())
+                .build();
+
         bookRepository.save(book);
     }
 

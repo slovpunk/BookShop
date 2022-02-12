@@ -1,6 +1,7 @@
 package com.example.bookshop.controller;
 
 
+import com.example.bookshop.forms.BookForm;
 import com.example.bookshop.model.Book;
 import com.example.bookshop.model.User;
 import com.example.bookshop.service.BookService;
@@ -32,9 +33,10 @@ public class MyController {
         return "view-all-books";
     }
 
-//    @PostMapping("/addBook")
-//    public Book addBook(@RequestBody Book book) {
-//        bookService.saveBook(book);
-//        return book;
-//    }
+    @PostMapping("/books")
+    public String saveBook(BookForm bookForm) {
+        bookService.saveBook(bookForm);
+        return "redirect:/bookins/books";
+    }
+
 }
