@@ -10,7 +10,7 @@
 <body>
 <h3>Add new author:</h3>
 <form method="post" action="/bookins/authors">
-    <label>Name:
+    <label>Surname:
         <input name="name" value="asd">
     </label>
     <input type="submit" name="Add">
@@ -26,18 +26,11 @@
         <tr>
             <td>${author.id}</td>
             <td>${author.name}</td>
-            <td>${author.books}</td>
-            <td>${books}</td>
-            <#--            <td>-->
-            <#--                <form method="post" action="/bookins/books/${book.id}">-->
-            <#--                    <input type="submit" value="delete book">-->
-            <#--                </form>-->
-            <#--            </td>-->
-            <#--        <#list books as book>-->
-            <#--            <tr>-->
-            <#--                <td>${book.title}</td>-->
-            <#--            </tr>-->
-            <#--        </#list>-->
+<#--            <td>-->
+<#--                <form method="post" action="/bookins/books/${book.id}">-->
+<#--                    <input type="submit" value="delete book">-->
+<#--                </form>-->
+<#--            </td>-->
         </tr>
     </#list>
 </table>

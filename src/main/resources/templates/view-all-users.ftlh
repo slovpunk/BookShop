@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h3>Add new book:</h3>
+<h3>Add new user:</h3>
 <form method="post" action="/bookins/users">
     <label>Name:
         <input name="name" value="asd">

@@ -10,7 +10,6 @@ import com.example.bookshop.model.User;
 import com.example.bookshop.service.BookAuthorService;
 import com.example.bookshop.service.BookService;
 import com.example.bookshop.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +39,12 @@ public class MyController {
         model.addAttribute("book", books);
         return "view-all-books";
     }
+
+//    @GetMapping("/booksByAuthor")
+//    public String getBooksByAuthor(Model model){
+//
+//    }
+
 
     @PostMapping("/books")
     public String saveBook(BookForm bookForm) {
