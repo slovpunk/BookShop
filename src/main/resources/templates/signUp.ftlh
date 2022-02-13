@@ -9,15 +9,6 @@
 </head>
 <body>
 <form method="post" action="/signUp">
-    <label>Name:
-        <input name="name" placeholder="Type your name">
-    </label>
-    <label>Surname:
-        <input name="surname" placeholder="Type your surname">
-    </label>
-    <label>Age:
-        <input name="age" placeholder="Type your age">
-    </label>
     <label>Email:
         <input type="email" name="email" placeholder="Type your email">
     </label>

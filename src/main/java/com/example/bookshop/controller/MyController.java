@@ -32,6 +32,10 @@ public class MyController {
 
     ////////////////////////////////////////////////////// books
 
+    @GetMapping("/welcome")
+    public String welcomePage() {
+        return "welcomePage";
+    }
 
     @GetMapping("/books")
     public String getAllBooks(Model model) {
@@ -63,10 +67,23 @@ public class MyController {
         return "view-all-users";
     }
 
+    @GetMapping("/user")
+    public String getUser(Model model, @PathVariable(value = "id") Long id) {
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        return "user";
+    }
+
     @PostMapping("/users")
     public String saveUser(UserForm userForm) {
         userService.saveUser(userForm);
         return "redirect:/bookins/users";
+    }
+
+    @GetMapping("/users/{id}/update")
+    public String addDetails(@PathVariable(value = "id") Long id, User user) {
+        userService.updateUser(id, user);
+        return "redirect:/user";
     }
 
 

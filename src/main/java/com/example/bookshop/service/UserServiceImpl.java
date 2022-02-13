@@ -35,4 +35,20 @@ public class UserServiceImpl implements UserService {
     public List<User> showAllUsers() {
         return userRepository.findAll();
     }
+
+    @Override
+    public void updateUser(Long id, User user) {
+        User data = userRepository.getById(id);
+        data.setAge(user.getAge());
+        data.setName(user.getName());
+        data.setSurname(user.getSurname());
+        data.setAge(user.getAge());
+        data.setFavoriteGenre(user.getFavoriteGenre());
+        userRepository.save(data);
+    }
+
+    @Override
+    public User getUser(Long id) {
+        return userRepository.getById(id);
+    }
 }

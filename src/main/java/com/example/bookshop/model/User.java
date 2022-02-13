@@ -18,12 +18,12 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
 
-//    public enum Role {
-//        ADMIN, USER
-//    }
-//
-//    @Enumerated(value = EnumType.STRING)
-//    private Role role;
+    public enum Role {
+        ADMIN, USER
+    }
+
+    @Enumerated(value = EnumType.STRING)// хранит строку
+    private Role role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +38,7 @@ public class User {
     private String email;
 
     private String hashPassword;
+
 
 
     @ManyToMany
