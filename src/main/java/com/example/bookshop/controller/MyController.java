@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -40,6 +41,7 @@ public class MyController {
     @GetMapping("/books")
     public String getAllBooks(Model model) {
         List<Book> books = bookService.showAllBooks();
+        Collections.sort(books);
         model.addAttribute("book", books);
         return "view-all-books";
     }

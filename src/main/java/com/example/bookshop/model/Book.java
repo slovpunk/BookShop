@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "books")
-public class Book {
+public class Book implements Comparable<Book>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +37,9 @@ public class Book {
     @ManyToMany(mappedBy = "bookList")
     private List<User> user;
 
+    @Override
+    public int compareTo(Book o) {
+        int result = this.title.compareTo(o.title);
+        return result;
+    }
 }
