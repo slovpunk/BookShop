@@ -18,12 +18,12 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
 
-    public enum Role {
-        ADMIN, USER
-    }
-
-    @Enumerated(value = EnumType.STRING)
-    private Role role;
+//    public enum Role {
+//        ADMIN, USER
+//    }
+//
+//    @Enumerated(value = EnumType.STRING)
+//    private Role role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,7 @@ public class User {
     private int age;
     @Column(name = "favorite_genre")
     private String favoriteGenre;
+
 
     @ManyToMany
     @JoinTable(

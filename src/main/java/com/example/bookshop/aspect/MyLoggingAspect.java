@@ -1,4 +1,4 @@
-package com.example.bookshop;
+package com.example.bookshop.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

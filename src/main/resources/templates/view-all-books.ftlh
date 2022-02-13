@@ -33,6 +33,7 @@
         <th>price</th>
         <th>genre</th>
         <th>description</th>
+        <th>author</th>
     </tr>
     <#list book as book>
         <tr>
@@ -41,6 +42,7 @@
             <td>${book.price?c}</td>
             <td>${book.genre}</td>
             <td>${book.description}</td>
+            <td>${book.bookAuthor.name}</td>
             <td>
                 <form method="post" action="/bookins/books/${book.id}">
                     <input type="submit" value="delete book">

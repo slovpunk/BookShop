@@ -40,11 +40,7 @@ public class MyController {
         return "view-all-books";
     }
 
-//    @GetMapping("/booksByAuthor")
-//    public String getBooksByAuthor(Model model){
-//
-//    }
-
+//    @PostMapping("/books/{books-id}/{author-id}")
 
     @PostMapping("/books")
     public String saveBook(BookForm bookForm) {
