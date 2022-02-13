@@ -54,7 +54,6 @@ public class MyController {
         return "redirect:/bookins/books";
     }
 
-
     ////////////////////////////////////////////////////// users
 
     @GetMapping("/users")

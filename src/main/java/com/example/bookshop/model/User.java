@@ -34,6 +34,11 @@ public class User {
     @Column(name = "favorite_genre")
     private String favoriteGenre;
 
+    @Column(unique = true)
+    private String email;
+
+    private String hashPassword;
+
 
     @ManyToMany
     @JoinTable(
