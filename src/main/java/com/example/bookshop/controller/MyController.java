@@ -10,6 +10,8 @@ import com.example.bookshop.model.User;
 import com.example.bookshop.service.BookAuthorService;
 import com.example.bookshop.service.BookService;
 import com.example.bookshop.service.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +47,26 @@ public class MyController {
         model.addAttribute("book", books);
         return "view-all-books";
     }
+
+//    @GetMapping("/books")
+//    public String getAllBooks(Model model) {
+//        List<Book> books = bookService.showAllBooks();
+//        Collections.sort(books);
+//        List<User> users = userService.showAllUsers();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.getByEmail(authentication.getName());
+//        if (user.getRole().toString().equals("USER")) {
+//            model.addAttribute("books", books);
+//            model.addAttribute("user", user);
+//            model.addAttribute("users", users);
+//            return "view-all-users";
+//        } else {
+//            model.addAttribute("books", books);
+//            model.addAttribute("user", user);
+//            model.addAttribute("users", users);
+//            return "admin";
+//        }
+//    }
 //
 //    @PostMapping("/book/{id}")
 //    public String showBooksOfAuthor(@PathVariable(value = "id") Long id) {
@@ -58,14 +80,6 @@ public class MyController {
         model.addAttribute("books", books);
         return "view-all-books-of-author";
     }
-
-//    @PostMapping("/books/{books-id}/{author-id}")
-//
-//    @PostMapping("/books")
-//    public String saveBook(BookForm bookForm, AuthorForm authorForm) {
-//        bookService.saveBook(bookForm, authorForm);
-//        return "redirect:/bookins/books";
-//    }
 
     @PostMapping("/books/{id}")
     public String deleteBook(@PathVariable(value = "id") Long id) {

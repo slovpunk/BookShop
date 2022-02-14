@@ -13,10 +13,4 @@ public class SignInController {
     public String signIn() {
         return "signIn";
     }
-
-    @GetMapping("/welcome")
-    public String signAfter() {
-        return "welcomePage";
-    }
-
 }
