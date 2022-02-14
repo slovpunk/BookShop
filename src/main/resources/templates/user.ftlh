@@ -25,5 +25,29 @@
     <input type="submit" name="Add">
     <br>
 </form>
-</body>
+<table>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>price</th>
+        <th>genre</th>
+        <th>description</th>
+        <th>author</th>
+    </tr>
+    <#list book as book>
+        <tr>
+            <td>${book.id}</td>
+            <td>${book.title}</td>
+            <td>${book.price?c}</td>
+            <td>${book.genre}</td>
+            <td>${book.description}</td>
+            <td>${book.bookAuthor.name}</td>
+            <td>
+                <form method="post" action="/bookins/books/${book.id}">
+                    <input type="submit" value="delete book">
+                </form>
+            </td>
+        </tr>
+    </#list>
+</table>
 </html>

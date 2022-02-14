@@ -35,10 +35,25 @@ public class MyController {
 
     ////////////////////////////////////////////////////// books
 
-    @GetMapping("/welcome")
-    public String welcomePage() {
-        return "welcomePage";
-    }
+//    @GetMapping("/books")
+//    public String getAllBooks(Model model) {
+//        List<Book> books = bookService.showAllBooks();
+//        Collections.sort(books);
+//        List<User> users = userService.showAllUsers();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.getByEmail(authentication.getName());
+//        if(user.getRole().equals("USER")) {
+//            model.addAttribute("books", books);
+//            model.addAttribute("user", user);
+//            return "user";
+//        } else {
+//            model.addAttribute("book", books);
+//            model.addAttribute("users", users);
+//            model.addAttribute("user", user);
+//            return "admin";
+//        }
+//    }
+
 
     @GetMapping("/books")
     public String getAllBooks(Model model) {
@@ -47,26 +62,6 @@ public class MyController {
         model.addAttribute("book", books);
         return "view-all-books";
     }
-
-//    @GetMapping("/books")
-//    public String getAllBooks(Model model) {
-//        List<Book> books = bookService.showAllBooks();
-//        Collections.sort(books);
-//        List<User> users = userService.showAllUsers();
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.getByEmail(authentication.getName());
-//        if (user.getRole().toString().equals("USER")) {
-//            model.addAttribute("books", books);
-//            model.addAttribute("user", user);
-//            model.addAttribute("users", users);
-//            return "view-all-users";
-//        } else {
-//            model.addAttribute("books", books);
-//            model.addAttribute("user", user);
-//            model.addAttribute("users", users);
-//            return "admin";
-//        }
-//    }
 //
 //    @PostMapping("/book/{id}")
 //    public String showBooksOfAuthor(@PathVariable(value = "id") Long id) {
@@ -109,7 +104,7 @@ public class MyController {
         return "redirect:/bookins/users";
     }
 
-    @GetMapping("/users/{id}/update")
+    @PostMapping("/users/{id}/update")
     public String addDetails(@PathVariable(value = "id") Long id, User user) {
         userService.updateUser(id, user);
         return "redirect:/bookins/user";

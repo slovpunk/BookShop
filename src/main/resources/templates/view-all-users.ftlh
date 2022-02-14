@@ -24,6 +24,11 @@
             <td>${user.surname}</td>
             <td>${user.age}</td>
             <td>${user.favoriteGenre}</td>
+            <td>
+                <form method="post" action="/bookins/users/${user.id}/update">
+                    <input type="submit" value="update user">
+                </form>
+            </td>
         </tr>
     </#list>
 </body>
