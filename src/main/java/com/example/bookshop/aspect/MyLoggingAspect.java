@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class MyLoggingAspect {
 
-    @Around("execution(* com.example.bookshop.service.*.*(..))")
+    @Around("execution(* com.example.bookshop.*.*(..))")
     public Object aroundAllRepositoryMethodAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
         String methodName = methodSignature.getName();

@@ -23,7 +23,7 @@ public class SignUpController {
     @PostMapping
     public String signUpUser(SignUpForm signUpForm) {
         signUpService.signUpUser(signUpForm);
-        return "redirect:/signIn";
+        return "view-all-books";
     }
 
 }

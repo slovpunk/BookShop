@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+<form>
+</form>
 <table>
     <tr>
         <th>id</th>
