@@ -9,6 +9,18 @@
 </head>
 <body>
 <form method="post" action="/signUp">
+    <label>Name:
+        <input type="name" name="name" placeholder="Type your name">
+    </label>
+    <label>Surname:
+        <input type="name" name="surname" placeholder="Type your surname">
+    </label>
+    <label>Age:
+        <input type="name" name="age" placeholder="Type your age">
+    </label>
+    <label>Genre:
+        <input type="text" name="favoriteGenre" placeholder="Choose your favorite genre">
+    </label>
     <label>Email:
         <input type="email" name="email" placeholder="Type your email">
     </label>

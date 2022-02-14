@@ -8,24 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h3>Add new user:</h3>
-<form method="post" action="/bookins/users">
-    <label>Name:
-        <input name="name" value="asd">
-    </label>
-    <label>Surname:
-        <input name="surname" value="Surname">
-    </label>
-    <label>Age:
-        <input name="age" value=99>
-    </label>
-    <label>Favorite Genre:
-        <input name="favoriteGenre" value="Description">
-    </label>
-    <input type="submit" name="Add">
-    <br>
-    <h3>Products in catalog right now:</h3>
-</form>
+<h3>User:</h3>
 <table>
     <tr>
         <th>id</th>

@@ -8,6 +8,24 @@
     <title>Document</title>
 </head>
 <body>
+<h3>Add new book:</h3>
+<form method="post" action="/bookins/books">
+    <label>Title:
+        <input name="title" value="asd">
+    </label>
+    <label>Genre:
+        <input name="genre" value="Genre">
+    </label>
+    <label>Price:
+        <input name="price" value=99>
+    </label>
+    <label>Description:
+        <input name="description" value="Description">
+    </label>
+    <input type="submit" name="Add">
+    <br>
+    <h3>Products in catalog right now:</h3>
+</form>
 <table>
     <tr>
         <th>id</th>
@@ -17,7 +35,7 @@
         <th>description</th>
         <th>author</th>
     </tr>
-    <#list book as book>
+    <#list books as book>
         <tr>
             <td>${book.id}</td>
             <td>${book.title}</td>
@@ -32,8 +50,5 @@
             </td>
         </tr>
     </#list>
-</table>
-<a href="/bookins/users">Users</a>
-<a href="/bookins/authors">Authors</a>
 </body>
 </html>

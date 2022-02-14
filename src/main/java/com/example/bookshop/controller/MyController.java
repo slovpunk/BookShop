@@ -45,14 +45,27 @@ public class MyController {
         model.addAttribute("book", books);
         return "view-all-books";
     }
+//
+//    @PostMapping("/book/{id}")
+//    public String showBooksOfAuthor(@PathVariable(value = "id") Long id) {
+//        List<Book> books = bookService.findAllByBookAuthorId(id);
+//        return "redirect:/book/{id}";
+//    }
+
+    @GetMapping("/book/{id}")
+    public String showBooksOfAuthor(Model model, @PathVariable(value = "id") Long id) {
+        List<Book> books = bookService.findAllByBookAuthorId(id);
+        model.addAttribute("books", books);
+        return "view-all-books-of-author";
+    }
 
 //    @PostMapping("/books/{books-id}/{author-id}")
-
-    @PostMapping("/books")
-    public String saveBook(BookForm bookForm) {
-        bookService.saveBook(bookForm);
-        return "redirect:/bookins/books";
-    }
+//
+//    @PostMapping("/books")
+//    public String saveBook(BookForm bookForm, AuthorForm authorForm) {
+//        bookService.saveBook(bookForm, authorForm);
+//        return "redirect:/bookins/books";
+//    }
 
     @PostMapping("/books/{id}")
     public String deleteBook(@PathVariable(value = "id") Long id) {
@@ -85,7 +98,7 @@ public class MyController {
     @GetMapping("/users/{id}/update")
     public String addDetails(@PathVariable(value = "id") Long id, User user) {
         userService.updateUser(id, user);
-        return "redirect:/user";
+        return "redirect:/bookins/user";
     }
 
 

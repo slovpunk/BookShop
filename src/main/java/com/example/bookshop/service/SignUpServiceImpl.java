@@ -23,10 +23,11 @@ public class SignUpServiceImpl implements SignUpService {
                 .name(signUpForm.getName())
                 .surname(signUpForm.getSurname())
                 .email(signUpForm.getEmail())
+                .age(signUpForm.getAge())
+                .favoriteGenre(signUpForm.getFavoriteGenre())
                 .role(User.Role.USER)
                 .hashPassword(passwordEncoder.encode(signUpForm.getPassword()))
                 .build();
-
         userRepository.save(user);
     }
 }

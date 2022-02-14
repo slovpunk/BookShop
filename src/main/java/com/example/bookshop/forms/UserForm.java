@@ -2,12 +2,13 @@ package com.example.bookshop.forms;
 
 //формы для того, чтобы не создавать RequestParam в методах контроллера
 public class UserForm {
-    private String favoriteGenre;
-
     private Long id;
     private String name;
     private String surname;
-    private int age;
+    private Integer age;
+    private String favoriteGenre;
+
+
 
     public Long getId() {
         return id;

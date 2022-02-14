@@ -24,7 +24,6 @@
     </label>
     <input type="submit" name="Add">
     <br>
-    <h3>Products in catalog right now:</h3>
 </form>
 </body>
 </html>

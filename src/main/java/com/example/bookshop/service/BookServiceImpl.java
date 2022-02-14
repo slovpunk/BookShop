@@ -1,5 +1,6 @@
 package com.example.bookshop.service;
 
+import com.example.bookshop.forms.AuthorForm;
 import com.example.bookshop.forms.BookForm;
 import com.example.bookshop.model.Book;
 import com.example.bookshop.model.BookAuthor;
@@ -20,7 +21,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void saveBook(BookForm bookForm) {
+    public void saveBook(BookForm bookForm, AuthorForm authorForm) {
         Book book = Book.builder()
                 .id(bookForm.getId())
                 .title(bookForm.getTitle())
@@ -40,6 +41,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> showAllBooks() {
         return bookRepository.findAll();
+    }
+
+    @Override
+    public List<Book> findAllByBookAuthorId(Long id) {
+        return bookRepository.findAllByBookAuthorId(id);
     }
 
 }

@@ -11,5 +11,7 @@ public interface BookAuthorService {
     void saveAuthor(AuthorForm authorForm);
     List<BookAuthor> showAllAuthors();
     BookAuthor getAuthorById(Long id);
+    List<BookAuthor> findAllById(Long id);
+
 
 }

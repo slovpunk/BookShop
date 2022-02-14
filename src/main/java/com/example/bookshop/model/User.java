@@ -30,8 +30,7 @@ public class User {
     private Long id;
     private String name;
     private String surname;
-    private int age;
-    @Column(name = "favorite_genre")
+    private Integer age;
     private String favoriteGenre;
 
     @Column(unique = true)

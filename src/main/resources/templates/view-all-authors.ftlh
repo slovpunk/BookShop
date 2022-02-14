@@ -26,11 +26,10 @@
         <tr>
             <td>${author.id}</td>
             <td>${author.name}</td>
-<#--            <td>-->
-<#--                <form method="post" action="/bookins/books/${book.id}">-->
-<#--                    <input type="submit" value="delete book">-->
-<#--                </form>-->
-<#--            </td>-->
+            <td>
+                <a href="/bookins/book/${author.id}">Books of author</a>
+            </td>
+
         </tr>
     </#list>
 </table>

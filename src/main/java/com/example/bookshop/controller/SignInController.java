@@ -14,4 +14,9 @@ public class SignInController {
         return "signIn";
     }
 
+    @GetMapping("/welcome")
+    public String signAfter() {
+        return "welcomePage";
+    }
+
 }

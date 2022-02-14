@@ -9,5 +9,6 @@ public class SignUpForm {
     private String email;
     private String password;
     private Integer age;
+    private String favoriteGenre;
 }
 
