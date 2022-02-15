@@ -31,5 +31,8 @@
             </td>
         </tr>
     </#list>
+</table>
+<a href="/bookins/user">Update info</a>
+<a href="/bookins/books">Back</a>
 </body>
 </html>

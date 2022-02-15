@@ -116,7 +116,7 @@ public class MyController {
         return "basket";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/{id}/user")
     public String getUser(Model model, @PathVariable(value = "id") Long id) {
         User user = userService.getUser(id);
         model.addAttribute("user", user);
@@ -132,9 +132,16 @@ public class MyController {
     @PostMapping("/users/{id}/update")
     public String addDetails(@PathVariable(value = "id") Long id, User user) {
         userService.updateUser(id, user);
-        return "redirect:/bookins/user";
+        return "user";
     }
 
+//    @PostMapping("/users/{id}/update")
+//    public String addDetails() {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.getByEmail(authentication.getName());
+//        userService.updateUser(user.getId(), user);
+//        return "redirect:/bookins/user";
+//    }
 
     ////////////////////////////////////////////////////// authors
 

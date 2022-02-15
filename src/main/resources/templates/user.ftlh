@@ -11,43 +11,27 @@
 <h3>Add new user:</h3>
 <form method="post" action="/bookins/users/${user.id}/update">
     <label>Name:
-        <input name="name" value="asd">
+        <input name="name" placeholder="name">
     </label>
     <label>Surname:
-        <input name="surname" value="Surname">
+        <input name="surname" placeholder="Surname">
     </label>
     <label>Age:
-        <input name="age" value=99>
+        <input name="age" placeholder="">
     </label>
     <label>Favorite Genre:
-        <input name="favoriteGenre" value="Description">
+        <input name="favoriteGenre" placeholder="Description">
     </label>
     <input type="submit" name="Add">
     <br>
 </form>
 <table>
     <tr>
-        <th>id</th>
-        <th>title</th>
-        <th>price</th>
-        <th>genre</th>
-        <th>description</th>
-        <th>author</th>
+        <td>${user.name}</td>
+        <td>${user.surname}</td>
+        <td>${user.age}</td>
+        <td>${user.favoriteGenre}</td>
     </tr>
-    <#list book as book>
-        <tr>
-            <td>${book.id}</td>
-            <td>${book.title}</td>
-            <td>${book.price?c}</td>
-            <td>${book.genre}</td>
-            <td>${book.description}</td>
-            <td>${book.bookAuthor.name}</td>
-            <td>
-                <form method="post" action="/bookins/books/${book.id}">
-                    <input type="submit" value="delete book">
-                </form>
-            </td>
-        </tr>
-    </#list>
 </table>
+</body>
 </html>
