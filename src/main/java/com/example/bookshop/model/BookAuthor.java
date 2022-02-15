@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "books_author")
-public class BookAuthor {
+public class BookAuthor implements Comparable<BookAuthor>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,9 @@ public class BookAuthor {
 
     @OneToMany(mappedBy = "bookAuthor")
     private List<Book> books;
+
+    @Override
+    public int compareTo(BookAuthor o) {
+        return this.id.compareTo(o.id);
+    }
 }

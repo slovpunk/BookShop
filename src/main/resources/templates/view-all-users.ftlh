@@ -25,14 +25,13 @@
             <td>${user.age}</td>
             <td>${user.favoriteGenre}</td>
             <td>
-                <form method="post" action="/bookins/users/${user.id}/update">
+                <form method="get" action="/bookins/${user.id}/user">
                     <input type="submit" value="update user">
                 </form>
             </td>
         </tr>
     </#list>
 </table>
-<a href="/bookins/user">Update info</a>
 <a href="/bookins/books">Back</a>
 </body>
 </html>

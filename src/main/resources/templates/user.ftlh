@@ -8,30 +8,41 @@
     <title>Document</title>
 </head>
 <body>
-<h3>Add new user:</h3>
+<h3>Personal cabinet:</h3>
 <form method="post" action="/bookins/users/${user.id}/update">
     <label>Name:
-        <input name="name" placeholder="name">
+        <input name="name" value=${user.name}>
     </label>
     <label>Surname:
-        <input name="surname" placeholder="Surname">
+        <input name="surname" value=${user.surname}>
     </label>
     <label>Age:
-        <input name="age" placeholder="">
+        <input name="age" value=${user.age}>
     </label>
     <label>Favorite Genre:
-        <input name="favoriteGenre" placeholder="Description">
+        <input name="favoriteGenre" value=${user.favoriteGenre}>
     </label>
     <input type="submit" name="Add">
     <br>
 </form>
 <table>
-    <tr>
-        <td>${user.name}</td>
-        <td>${user.surname}</td>
-        <td>${user.age}</td>
-        <td>${user.favoriteGenre}</td>
+    <#list books as book>
+        <tr>
+            <td>${book.id}</td>
+            <td>${book.title}</td>
+            <td>${book.price?c}</td>
+            <td>${book.genre}</td>
+            <td>${book.description}</td>
+            <td>${book.bookAuthor.name}</td>
+            <td>
+                <form method="post" action="/bookins/books/${user.id}/basket/${book.id}">
+                    <input type="submit" value="add to basket">
+                </form>
+            </td>
+        </tr>
+    </#list>
     </tr>
 </table>
+<a href="/bookins/${user.id}/basket">Basket</a>
 </body>
 </html>

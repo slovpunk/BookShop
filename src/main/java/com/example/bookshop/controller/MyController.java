@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -35,36 +36,36 @@ public class MyController {
 
     ////////////////////////////////////////////////////// books
 
-//    @GetMapping("/books")
-//    public String getAllBooks(Model model) {
-//        List<Book> books = bookService.showAllBooks();
-//        Collections.sort(books);
-//        List<User> users = userService.showAllUsers();
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.getByEmail(authentication.getName());
-//        if(user.getRole().equals("USER")) {
-//            model.addAttribute("books", books);
-//            model.addAttribute("user", user);
-//            return "user";
-//        } else {
-//            model.addAttribute("book", books);
-//            model.addAttribute("users", users);
-//            model.addAttribute("user", user);
-//            return "admin";
-//        }
-//    }
-
-
     @GetMapping("/books")
     public String getAllBooks(Model model) {
         List<Book> books = bookService.showAllBooks();
         Collections.sort(books);
+        List<User> users = userService.showAllUsers();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getByEmail(authentication.getName());
-        model.addAttribute("user", user);
-        model.addAttribute("book", books);
-        return "view-all-books";
+        if(user.getRole().toString().equals("USER")) {
+            model.addAttribute("books", books);
+            model.addAttribute("user", user);
+            return "user";
+        } else {
+            model.addAttribute("book", books);
+            model.addAttribute("users", users);
+            model.addAttribute("user", user);
+            return "admin";
+        }
     }
+
+
+//    @GetMapping("/books")
+//    public String getAllBooks(Model model) {
+//        List<Book> books = bookService.showAllBooks();
+//        Collections.sort(books);
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.getByEmail(authentication.getName());
+//        model.addAttribute("user", user);
+//        model.addAttribute("book", books);
+//        return "view-all-books";
+//    }
 
     @GetMapping("/book/{id}")
     public String showBooksOfAuthor(Model model, @PathVariable(value = "id") Long id) {
@@ -78,6 +79,20 @@ public class MyController {
         bookService.deleteBook(id);
         return "redirect:/bookins/books";
     }
+
+    @PostMapping("/books/save")
+    public String addBookAndAuthor(BookForm bookForm) {
+        bookService.saveBook(bookForm);
+        return "redirect:/bookins/books";
+    }
+
+    @PostMapping("/books/{id}/update")
+    public String updateBook(@PathVariable(value = "id") Long id, Book book) {
+        bookService.updateBook(id, book);
+        return "redirect:/bookins/books";
+    }
+
+    ////////////////////////////////////////////////////// users
 
     @PostMapping("/books/{user-id}/basket/{book-id}")
     public String addToBasket(@PathVariable(value = "user-id") Long userId,
@@ -96,10 +111,8 @@ public class MyController {
         Book book = bookService.getById(id);
         user.getBookList().remove(book);
         userService.userSave(user);
-        return "redirect:/bookins/books";
+        return "redirect:/bookins" + "/" + user.getId() + "/basket";
     }
-
-    ////////////////////////////////////////////////////// users
 
     @GetMapping("/users")
     public String getAllUsers(Model model) {
@@ -130,7 +143,7 @@ public class MyController {
     }
 
     @PostMapping("/users/{id}/update")
-    public String addDetails(@PathVariable(value = "id") Long id, User user) {
+    public String updateUser(@PathVariable(value = "id") Long id, User user) {
         userService.updateUser(id, user);
         return "user";
     }
@@ -155,7 +168,7 @@ public class MyController {
     @PostMapping("/authors")
     public String saveUser(AuthorForm authorForm) {
         bookAuthorService.saveAuthor(authorForm);
-        return "redirect:/bookins/authors";
+        return "redirect:/bookins/books";
     }
 
 }

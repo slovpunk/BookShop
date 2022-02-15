@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,9 +29,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "asdasd")
     private String name;
+    @NotEmpty(message = "asdasd")
     private String surname;
+    @NotEmpty(message = "asdasd")
     private Integer age;
+    @NotEmpty(message = "asdasd")
     private String favoriteGenre;
 
     @Column(unique = true)

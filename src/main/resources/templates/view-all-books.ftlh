@@ -38,8 +38,8 @@
         </tr>
     </#list>
 </table>
-<a href="/bookins/users">User</a>
+<a href="/bookins/users">Personal cabinet</a>
 <a href="/bookins/authors">Authors</a>
-<a href="/bookins/${user.id}/basket">Basket</a>
+
 </body>
 </html>
