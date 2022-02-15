@@ -9,6 +9,7 @@
 </head>
 <body>
 <h3>Personal cabinet:</h3>
+
 <form method="post" action="/bookins/users/${user.id}/update">
     <label>Name:
         <input name="name" value=${user.name}>
@@ -25,6 +26,7 @@
     <input type="submit" name="Add">
     <br>
 </form>
+<h3>Available books</h3>
 <table>
     <#list books as book>
         <tr>

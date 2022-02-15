@@ -145,7 +145,7 @@ public class MyController {
     @PostMapping("/users/{id}/update")
     public String updateUser(@PathVariable(value = "id") Long id, User user) {
         userService.updateUser(id, user);
-        return "user";
+        return "redirect:/bookins/books";
     }
 
 //    @PostMapping("/users/{id}/update")
