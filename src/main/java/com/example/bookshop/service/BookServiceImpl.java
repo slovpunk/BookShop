@@ -52,5 +52,4 @@ public class BookServiceImpl implements BookService {
     public Book getById(Long id) {
         return bookRepository.getById(id);
     }
-
 }

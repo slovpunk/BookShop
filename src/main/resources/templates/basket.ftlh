@@ -17,7 +17,7 @@
         <th>description</th>
         <th>author</th>
     </tr>
-    <#list book as book>
+    <#list books as book>
         <tr>
             <td>${book.id}</td>
             <td>${book.title}</td>
@@ -25,21 +25,14 @@
             <td>${book.genre}</td>
             <td>${book.description}</td>
             <td>${book.bookAuthor.name}</td>
-            <td>
-                <form method="post" action="/bookins/books/${book.id}">
-                    <input type="submit" value="delete book">
-                </form>
-            </td>
-            <td>
-                <form method="post" action="/bookins/books/${user.id}/basket/${book.id}">
-                    <input type="submit" value="add to basket">
-                </form>
-            </td>
+<#--            <td>-->
+<#--                <form method="post" action="/bookins/books/${book.id}">-->
+<#--                    <input type="submit" value="delete book">-->
+<#--                </form>-->
+<#--            </td>-->
         </tr>
     </#list>
 </table>
-<a href="/bookins/users">Users</a>
-<a href="/bookins/authors">Authors</a>
-<a href="/bookins/${user.id}/basket">Basket</a>
+<a href="/bookins/books">Back</a>
 </body>
 </html>

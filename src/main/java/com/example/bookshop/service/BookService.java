@@ -13,5 +13,4 @@ public interface BookService {
     List<Book> showAllBooks();
     List<Book> findAllByBookAuthorId(Long id);
     Book getById(Long id);
-
 }

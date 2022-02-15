@@ -86,7 +86,7 @@ public class MyController {
         Book book = bookService.getById(bookId);
         user.getBookList().add(book);
         userService.userSave(user);
-        return "redirect:/books";
+        return "redirect:/bookins/books";
     }
 
     ////////////////////////////////////////////////////// users
@@ -96,6 +96,14 @@ public class MyController {
         List<User> users = userService.showAllUsers();
         model.addAttribute("users", users);
         return "view-all-users";
+    }
+
+    @GetMapping("/{id}/basket")
+    public String getBooksFromBasket(Model model, @PathVariable(value = "id") Long id) {
+        User user = userService.getById(id);
+        model.addAttribute("books", user.getBookList());
+        model.addAttribute("user", user);
+        return "basket";
     }
 
     @GetMapping("/user")
