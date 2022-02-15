@@ -59,15 +59,12 @@ public class MyController {
     public String getAllBooks(Model model) {
         List<Book> books = bookService.showAllBooks();
         Collections.sort(books);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getByEmail(authentication.getName());
+        model.addAttribute("user", user);
         model.addAttribute("book", books);
         return "view-all-books";
     }
-//
-//    @PostMapping("/book/{id}")
-//    public String showBooksOfAuthor(@PathVariable(value = "id") Long id) {
-//        List<Book> books = bookService.findAllByBookAuthorId(id);
-//        return "redirect:/book/{id}";
-//    }
 
     @GetMapping("/book/{id}")
     public String showBooksOfAuthor(Model model, @PathVariable(value = "id") Long id) {
@@ -80,6 +77,16 @@ public class MyController {
     public String deleteBook(@PathVariable(value = "id") Long id) {
         bookService.deleteBook(id);
         return "redirect:/bookins/books";
+    }
+
+    @PostMapping("/books/{user-id}/basket/{book-id}")
+    public String addToBasket(@PathVariable(value = "user-id") Long userId,
+                              @PathVariable(value = "book-id") Long bookId) {
+        User user = userService.getById(userId);
+        Book book = bookService.getById(bookId);
+        user.getBookList().add(book);
+        userService.userSave(user);
+        return "redirect:/books";
     }
 
     ////////////////////////////////////////////////////// users

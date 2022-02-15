@@ -12,4 +12,6 @@ public interface UserService {
     void updateUser(Long id, User user);
     User getUser(Long id);
     User getByEmail(String email);
+    User getById(Long id);
+    User userSave(User user);
 }

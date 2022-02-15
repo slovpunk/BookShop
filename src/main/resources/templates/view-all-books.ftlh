@@ -30,6 +30,11 @@
                     <input type="submit" value="delete book">
                 </form>
             </td>
+            <td>
+                <form method="post" action="/bookins/books/${user.id}/basket/${book.id}">
+                    <input type="submit" value="add to basket">
+                </form>
+            </td>
         </tr>
     </#list>
 </table>
