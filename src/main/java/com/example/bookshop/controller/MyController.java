@@ -89,6 +89,16 @@ public class MyController {
         return "redirect:/bookins/books";
     }
 
+    @PostMapping("/books/{id}/deleteBasket")
+    public String deleteFromBasket(@PathVariable(value = "id") Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user  = userService.getByEmail(authentication.getName());
+        Book book = bookService.getById(id);
+        user.getBookList().remove(book);
+        userService.userSave(user);
+        return "redirect:/bookins/books";
+    }
+
     ////////////////////////////////////////////////////// users
 
     @GetMapping("/users")

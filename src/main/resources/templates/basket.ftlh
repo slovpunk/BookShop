@@ -25,11 +25,11 @@
             <td>${book.genre}</td>
             <td>${book.description}</td>
             <td>${book.bookAuthor.name}</td>
-<#--            <td>-->
-<#--                <form method="post" action="/bookins/books/${book.id}">-->
-<#--                    <input type="submit" value="delete book">-->
-<#--                </form>-->
-<#--            </td>-->
+            <td>
+                <form method="post" action="/bookins/books/${book.id}/deleteBasket">
+                    <input type="submit" value="delete book from basket">
+                </form>
+            </td>
         </tr>
     </#list>
 </table>
