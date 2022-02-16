@@ -33,6 +33,21 @@
         </tr>
     </#list>
 </table>
+<h3>Favorite authors:</h3>
+<table>
+    <#list favAuthor as favAuthor>
+        <tr>
+            <td>${favAuthor}</td>
+        </tr>
+<#--        <td>-->
+<#--            <a href="/bookins/book/${favAuthor.id}">Books of author</a>-->
+<#--        </td>-->
+    </#list>
+</table>
+<h3>Total sum: ${summ?c}</h3>
+<br>
+<br>
+<br>
 <a href="/bookins/books">Back</a>
 </body>
 </html>

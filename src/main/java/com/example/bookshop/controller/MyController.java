@@ -16,8 +16,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/bookins")
@@ -130,8 +133,26 @@ public class MyController {
     @GetMapping("/{id}/basket")
     public String getBooksFromBasket(Model model, @PathVariable(value = "id") Long id) {
         User user = userService.getById(id);
-        model.addAttribute("books", user.getBookList());
+        List<Book> books = user.getBookList();
+        Set<String> favoriteAuthors = books
+                .stream()
+                .map(Book::getBookAuthor)
+                .map(BookAuthor::getName)
+                .collect(Collectors.toSet());
+//        List<BookAuthor> favAuthors = books
+//                .stream()
+//                .map(Book::getBookAuthor)
+//                .collect(Collectors.toList());
+        double sumOfPriceOfBooks = user.getBookList()
+                .stream()
+                .map(Book::getPrice)
+                .reduce((accumulator, element) -> accumulator + element)
+                .get();
+        model.addAttribute("books", books);
         model.addAttribute("user", user);
+        model.addAttribute("summ", sumOfPriceOfBooks);
+        model.addAttribute("favAuthor", favoriteAuthors);
+//        model.addAttribute("fAuthor", favAuthors);
         return "basket";
     }
 
