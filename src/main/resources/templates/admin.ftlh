@@ -55,9 +55,7 @@
                 </form>
             </td>
             <td>
-                <form method="post" action="/bookins/books/${book.id}/update">
-                    <input type="submit" value="update book">
-                </form>
+                <a href="/bookins/books/update/${book.id}">Update</a>
             </td>
         </tr>
     </#list>

@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -90,6 +89,13 @@ public class MyController {
     public String updateBook(@PathVariable(value = "id") Long id, Book book) {
         bookService.updateBook(id, book);
         return "redirect:/bookins/books";
+    }
+
+    @GetMapping("/books/update/{id}")
+    public String updateBooks(Model model, @PathVariable(value = "id") Long id) {
+        Book book = bookService.getById(id);
+        model.addAttribute("book", book);
+        return "book";
     }
 
     ////////////////////////////////////////////////////// users

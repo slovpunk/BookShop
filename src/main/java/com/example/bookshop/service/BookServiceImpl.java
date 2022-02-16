@@ -66,7 +66,7 @@ public class BookServiceImpl implements BookService {
         data.setGenre(book.getGenre());
         data.setPrice(book.getPrice());
         data.setDescription(book.getDescription());
-        data.setBookAuthor(book.getBookAuthor());
+//        data.setBookAuthor(book.getBookAuthor());
         bookRepository.save(data);
     }
 }
