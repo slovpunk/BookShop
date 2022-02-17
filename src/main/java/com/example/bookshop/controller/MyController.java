@@ -90,10 +90,17 @@ public class MyController {
 
     @PostMapping("/books/save")
     public String addBookAndAuthor(BookForm bookForm, AuthorForm authorForm) {
-        bookAuthorService.saveAuthor(authorForm);
+        List<BookAuthor> bookAuthors = bookAuthorService.showAllAuthors();
         BookAuthor bookAuthor = bookAuthorService.getBookAuthorByName(authorForm.getName());
-        bookForm.setBookAuthor(bookAuthor);
-        bookService.saveBook(bookForm);
+        if(bookAuthor != null ) {
+            bookForm.setBookAuthor(bookAuthor);
+            bookService.saveBook(bookForm);
+        } else {
+            bookAuthorService.saveAuthor(authorForm);
+            bookAuthor = bookAuthorService.getBookAuthorByName(authorForm.getName());
+            bookForm.setBookAuthor(bookAuthor);
+            bookService.saveBook(bookForm);
+        }
         return "redirect:/bookins/books";
     }
 
