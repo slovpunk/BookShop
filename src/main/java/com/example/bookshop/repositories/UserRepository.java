@@ -1,5 +1,7 @@
 package com.example.bookshop.repositories;
 
+import com.example.bookshop.model.Book;
+import com.example.bookshop.model.BookAuthor;
 import com.example.bookshop.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,5 +12,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
     User getByEmail(String email);
     User getById(Long id);
-
 }

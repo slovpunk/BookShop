@@ -44,7 +44,7 @@
 <#--        </td>-->
     </#list>
 </table>
-<h3>Total sum: ${summ?c}</h3>
+<h3>Total sum: ${sum?c}</h3>
 <br>
 <br>
 <br>

@@ -1,6 +1,7 @@
 package com.example.bookshop.service;
 
 import com.example.bookshop.forms.AuthorForm;
+import com.example.bookshop.model.Book;
 import com.example.bookshop.model.BookAuthor;
 import com.example.bookshop.repositories.BookAuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,5 @@ public class BookAuthorServiceImpl implements BookAuthorService {
     public BookAuthor getBookAuthorByName(String name) {
         return bookAuthorRepository.getBookAuthorByName(name);
     }
+
 }

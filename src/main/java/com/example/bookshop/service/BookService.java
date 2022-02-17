@@ -4,6 +4,7 @@ import com.example.bookshop.forms.AuthorForm;
 import com.example.bookshop.forms.BookForm;
 import com.example.bookshop.model.Book;
 import com.example.bookshop.model.BookAuthor;
+import com.example.bookshop.model.User;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface BookService {
     Book getById(Long id);
 
     void updateBook(Long id, Book book);
+
+    List<Book> findAllByUser(User user);
+
 }

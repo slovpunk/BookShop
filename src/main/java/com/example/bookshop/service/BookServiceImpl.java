@@ -69,4 +69,9 @@ public class BookServiceImpl implements BookService {
 //        data.setBookAuthor(book.getBookAuthor());
         bookRepository.save(data);
     }
+
+    @Override
+    public List<Book> findAllByUser(User user) {
+        return bookRepository.findAllByUser(user);
+    }
 }
