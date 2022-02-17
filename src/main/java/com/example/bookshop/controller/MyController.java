@@ -45,7 +45,7 @@ public class MyController {
         List<User> users = userService.showAllUsers();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getByEmail(authentication.getName());
-        if(user.getRole().toString().equals("USER")) {
+        if (user.getRole().toString().equals("USER")) {
             model.addAttribute("books", books);
             model.addAttribute("user", user);
             return "user";
@@ -78,6 +78,12 @@ public class MyController {
 
     @PostMapping("/books/{id}")
     public String deleteBook(@PathVariable(value = "id") Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getByEmail(authentication.getName());
+        Book book = bookService.getById(id);
+        while (user.getBookList().contains(book))
+            user.getBookList().remove(book);
+        userService.userSave(user);
         bookService.deleteBook(id);
         return "redirect:/bookins/books";
     }
@@ -116,7 +122,7 @@ public class MyController {
     @PostMapping("/books/{id}/deleteBasket")
     public String deleteFromBasket(@PathVariable(value = "id") Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user  = userService.getByEmail(authentication.getName());
+        User user = userService.getByEmail(authentication.getName());
         Book book = bookService.getById(id);
         user.getBookList().remove(book);
         userService.userSave(user);
@@ -148,9 +154,13 @@ public class MyController {
                 .map(Book::getPrice)
                 .reduce((accumulator, element) -> accumulator + element)
                 .get();
-        model.addAttribute("books", books);
+        if (sumOfPriceOfBooks == 0) {
+            model.addAttribute("summ", -1);
+        } else {
+            model.addAttribute("summ", sumOfPriceOfBooks);
+        }
+        model.addAttribute("books", user.getBookList());
         model.addAttribute("user", user);
-        model.addAttribute("summ", sumOfPriceOfBooks);
         model.addAttribute("favAuthor", favoriteAuthors);
 //        model.addAttribute("fAuthor", favAuthors);
         return "basket";

@@ -29,21 +29,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "asdasd")
     private String name;
-    @NotEmpty(message = "asdasd")
     private String surname;
-    @NotEmpty(message = "asdasd")
     private Integer age;
-    @NotEmpty(message = "asdasd")
     private String favoriteGenre;
 
     @Column(unique = true)
     private String email;
 
     private String hashPassword;
-
-
 
     @ManyToMany
     @JoinTable(
