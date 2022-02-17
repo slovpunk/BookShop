@@ -40,4 +40,9 @@ public class BookAuthorServiceImpl implements BookAuthorService {
     public List<BookAuthor> findAllById(Long id) {
         return bookAuthorRepository.findAllById(id);
     }
+
+    @Override
+    public BookAuthor getBookAuthorByName(String name) {
+        return bookAuthorRepository.getBookAuthorByName(name);
+    }
 }

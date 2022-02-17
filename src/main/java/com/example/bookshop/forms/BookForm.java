@@ -1,11 +1,22 @@
 package com.example.bookshop.forms;
 
+import com.example.bookshop.model.BookAuthor;
+
 public class BookForm {
     private Long id;
     private String title;
     private String genre;
     private Double price;
     private String description;
+    private BookAuthor bookAuthor;
+
+    public BookAuthor getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public void setBookAuthor(BookAuthor bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
 
     public Long getId() {
         return id;

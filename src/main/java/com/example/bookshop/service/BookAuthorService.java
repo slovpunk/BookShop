@@ -12,6 +12,5 @@ public interface BookAuthorService {
     List<BookAuthor> showAllAuthors();
     BookAuthor getAuthorById(Long id);
     List<BookAuthor> findAllById(Long id);
-
-
+    BookAuthor getBookAuthorByName(String name);
 }

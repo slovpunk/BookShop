@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
                 .title(bookForm.getTitle())
                 .price(bookForm.getPrice())
                 .genre(bookForm.getGenre())
-                .bookAuthor(bookAuthorRepository.findAll().stream().max(BookAuthor::compareTo).get())
+                .bookAuthor(bookForm.getBookAuthor())
                 .description(bookForm.getDescription())
                 .build();
 

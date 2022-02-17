@@ -89,7 +89,10 @@ public class MyController {
     }
 
     @PostMapping("/books/save")
-    public String addBookAndAuthor(BookForm bookForm) {
+    public String addBookAndAuthor(BookForm bookForm, AuthorForm authorForm) {
+        bookAuthorService.saveAuthor(authorForm);
+        BookAuthor bookAuthor = bookAuthorService.getBookAuthorByName(authorForm.getName());
+        bookForm.setBookAuthor(bookAuthor);
         bookService.saveBook(bookForm);
         return "redirect:/bookins/books";
     }
@@ -201,11 +204,11 @@ public class MyController {
         model.addAttribute("authors", authors);
         return "view-all-authors";
     }
-
-    @PostMapping("/authors")
-    public String saveUser(AuthorForm authorForm) {
-        bookAuthorService.saveAuthor(authorForm);
-        return "redirect:/bookins/books";
-    }
+//
+//    @PostMapping("/authors")
+//    public String saveUser(AuthorForm authorForm) {
+//        bookAuthorService.saveAuthor(authorForm);
+//        return "redirect:/bookins/books";
+//    }
 
 }

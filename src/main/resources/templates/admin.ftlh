@@ -15,12 +15,6 @@
 <h3>Your personal data is
     <a href="/bookins/${user.id}/user">here!</a>
 </h3>
-<form method="post" action="/bookins/authors">
-    <label>Author:
-        <input name="name" placeholder="author">
-    </label>
-    <input type="submit" name="Add">
-</form>
 <h3>Add new product:</h3>
 <form method="post" action="/bookins/books/save">
     <label>Title:
@@ -34,6 +28,9 @@
     </label>
     <label>Description:
         <input name="description" value="set description">
+    </label>
+    <label>Author:
+        <input name="name" placeholder="author">
     </label>
     <input type="submit" name="Add">
     <br>
