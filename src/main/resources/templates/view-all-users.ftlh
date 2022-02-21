@@ -25,7 +25,7 @@
             <td>${user.age}</td>
             <td>${user.favoriteGenre}</td>
             <td>
-                <form method="get" action="/bookins/${user.id}/user">
+                <form method="get" action="/bookins/${user.id}/user/update">
                     <input type="submit" value="update user">
                 </form>
             </td>

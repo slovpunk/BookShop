@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -168,6 +167,13 @@ public class MyController {
         User user = userService.getUser(id);
         model.addAttribute("user", user);
         return "user";
+    }
+
+    @GetMapping("/{id}/user/update")
+    public String getUserUpdate(Model model, @PathVariable(value = "id") Long id) {
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        return "user-update";
     }
 
     @PostMapping("/users")
