@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h3>Personal cabinet:</h3>
+<h3>Update user:</h3>
 
 <form method="post" action="/bookins/users/${user.id}/update">
     <label>Name:
@@ -26,7 +26,5 @@
     <input type="submit" name="Add">
     <br>
 </form>
-<h3>Available books</h3>
-<a href="/bookins/${user.id}/basket">Basket</a>
 </body>
 </html>

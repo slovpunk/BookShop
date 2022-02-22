@@ -12,9 +12,6 @@
 <h3>Firstly, you can change registered users
     <a href="/bookins/users">here!</a>
 </h3>
-<h3>Your personal data is
-    <a href="/bookins/${user.id}/user">here!</a>
-</h3>
 <h3>Add new product:</h3>
 <form method="post" action="/bookins/books/save">
     <label>Title:
